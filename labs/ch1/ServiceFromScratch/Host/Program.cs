@@ -8,20 +8,20 @@ namespace Host
     {
         static void Main()
         {
-            // A side effect (although perhaps documented)  of supplying 
-            // a Uri to the ServiceHost contstructor is that this Uri
-            // becomes the base address for the service. 
+            // This Servicehost constructor **does not** specify a base
+            // address for the service. Consequently, the developer must
+            // supply the complete URI when constructing the service 
+            // endpoint.
             using (
-                var host = new ServiceHost(typeof (HelloIndigoService),
-                    new Uri("http://localhost:8000/HelloIndigo")))
+                var host = new ServiceHost(typeof (HelloIndigoService)))
             {
-                // By specifying the base address for the service when
-                // constructing the ServiceHost, we can then specify 
-                // endpoints using a relative address. That is, the 
-                // complete address of the service is 
-                // `http://localhost:8080/HelloIndigo/HelloIndigoService`.
-                host.AddServiceEndpoint(typeof (HelloIndigoService),
-                    new BasicHttpBinding(), "HelloIndigoService");
+                // Because the ServiceHost constructor **did not** 
+                // specify a URI, the service has **no** base address. 
+                // As a consequence, the call to `AddServiceEndpoint` must
+                // include the completely specified URI of the service.
+                host.AddServiceEndpoint(typeof (IHelloIndigoService),
+                    new BasicHttpBinding(),
+                    "http://localhost:8000/HelloIndigo/HelloIndigoService");
                 host.Open();
 
                 Console.WriteLine(
