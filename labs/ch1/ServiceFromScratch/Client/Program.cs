@@ -6,7 +6,8 @@ namespace Client
     /// <summary>
     /// An **copy** of the interface specifying the contract for this service.
     /// </summary>
-    [ServiceContract(Name = "http://www.thatindigogirl.com/samples/2006/06")]
+    [ServiceContract(Name = "HelloIndigoService",
+        Namespace = "http://www.thatindigogirl.com/samples/2006/06")]
     public interface IHelloIndigoService
     {
         [OperationContract]

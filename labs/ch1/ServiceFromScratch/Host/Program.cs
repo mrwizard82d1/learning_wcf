@@ -12,7 +12,7 @@ namespace Host
                 var host = new ServiceHost(typeof (HelloIndigoService),
                     new Uri("http://localhost:8000/HelloIndigo")))
             {
-                host.AddServiceEndpoint(typeof (IHelloIndigoService),
+                host.AddServiceEndpoint(typeof (HelloIndigoService),
                     new BasicHttpBinding(), "HelloIndigoService");
                 host.Open();
 
