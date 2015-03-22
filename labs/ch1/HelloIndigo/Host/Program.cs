@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel;
 
 namespace Host
 {
@@ -6,8 +7,16 @@ namespace Host
     {
         static void Main()
         {
-            Console.WriteLine("Press <ENTER> to terminate host.");
-            Console.ReadLine();
+            // Note that one must create a ServiceHost using the concrete
+            // implementation of the service (not the interface as I keep
+            // wanting to type :)).
+            using (var host = new ServiceHost(typeof(HelloIndigoService)))
+            {
+                host.Open();
+
+                Console.WriteLine("Press <ENTER> to terminate host.");
+                Console.ReadLine();
+            }
         }
     }
 }
