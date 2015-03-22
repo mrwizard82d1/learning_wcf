@@ -32,7 +32,7 @@ namespace Host.Specs
         {
             var endPointAddress =
                 new EndpointAddress(
-                    "http://localhost:8733/Design_Time_Addresses/Host/HelloIndigoService");
+                    "http://localhost:8000/HelloIndigo");
             var proxy =
                 ChannelFactory<IHelloIndigoService>.CreateChannel(
                     new BasicHttpBinding(), endPointAddress);
