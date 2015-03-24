@@ -40,11 +40,11 @@ namespace Host.Specs
         }
         
         [Then(@"I receive ""(.*)"" as a result")]
-        public void ThenIReceiveAsAResult(string p0)
+        public void ThenIReceiveAsAResult(string expectedResult)
         {
             var proxy = ScenarioContext.Current.Get<IHelloIndigoService>();
             var result = proxy.HelloIndigo();
-            Assert.That(result, Is.EqualTo("Hello Indigo"));
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
     }
 }
