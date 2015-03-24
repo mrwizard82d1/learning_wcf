@@ -6,7 +6,7 @@ namespace Client
     {
         static void Main()
         {
-            var proxy = new localhost.HelloIndigoServiceClient();
+            var proxy = new HelloIndigoServiceClient();
             var result = proxy.HelloIndigo();
             Console.WriteLine(result);
             Console.WriteLine();
